@@ -220,25 +220,86 @@ CoreNAS ist eine modulare NAS-Software für Debian 12, die konsequent auf eine C
 
 #### 2.3.2 Software-Repository (Beispielstruktur)
 
+
 ```text
-corenas/                  # Hauptprojektverzeichnis (Repo-Root)
-├── cli/                  # Python-CLI-Komponenten (Module)
-│   ├── user.py           # IAM-CLI
-│   ├── network.py        # Network-CLI
-│   └── ...
-├── backend/              # Flask-Backend (Proxy, Session, Auth)
-│   ├── app.py
-│   └── ...
-├── frontend/             # Vue.js-Frontend (Web-UI)
-│   ├── src/
-│   └── ...
-├── tests/                # Unit-/Integrationstests
-├── docs/                 # Projektdokumentation
-├── scripts/              # Setup, Build, Tools
-├── Makefile              # Build-/Test-Tasks
-├── requirements.txt      # Python-Abhängigkeiten
-├── package.json          # npm-Abhängigkeiten (Frontend)
-└── README.md             # Projektübersicht
+corenas/
+├── src/
+│   ├── cli/
+│   │   ├── commands/
+│   │   └── modules/
+│   │       ├── iam/
+│   │       ├── log/
+│   │       │   ├── alerting/
+│   │       │   ├── audit/
+│   │       │   └── monitoring/
+│   │       ├── mount/
+│   │       │   ├── local/
+│   │       │   └── remote/
+│   │       ├── network/
+│   │       │   ├── bridge/
+│   │       │   ├── ethernet/
+│   │       │   └── wifi/
+│   │       ├── share/
+│   │       │   ├── ftp/
+│   │       │   ├── nfs/
+│   │       │   ├── sftp/
+│   │       │   └── smb/
+│   │       ├── storage/
+│   │       │   ├── btrfs/
+│   │       │   ├── lvm/
+│   │       │   ├── mdadm/
+│   │       │   ├── single_disk/
+│   │       │   └── zfs/
+│   │       └── system/
+│   │           ├── hardware/
+│   │           ├── hostname/
+│   │           ├── locale/
+│   │           ├── power/
+│   │           ├── time/
+│   │           └── update/
+│   ├── backend/
+│   │   ├── db/
+│   │   └── modules/
+│   │       ├── iam/
+│   │       ├── log/
+│   │       │   ├── alerting/
+│   │       │   ├── audit/
+│   │       │   └── monitoring/
+│   │       ├── mount/
+│   │       │   ├── local/
+│   │       │   └── remote/
+│   │       ├── network/
+│   │       │   ├── bridge/
+│   │       │   ├── ethernet/
+│   │       │   └── wifi/
+│   │       ├── share/
+│   │       │   ├── ftp/
+│   │       │   ├── nfs/
+│   │       │   ├── sftp/
+│   │       │   └── smb/
+│   │       ├── storage/
+│   │       │   ├── btrfs/
+│   │       │   ├── lvm/
+│   │       │   ├── mdadm/
+│   │       │   ├── single_disk/
+│   │       │   └── zfs/
+│   │       └── system/
+│   │           ├── hardware/
+│   │           ├── hostname/
+│   │           ├── locale/
+│   │           ├── power/
+│   │           ├── time/
+│   │           └── update/
+│   ├── common/
+│   │   ├── config/
+│   │   ├── exceptions/
+│   │   ├── models/
+│   │   └── utils/
+│   └── webui/
+│       ├── components/
+│       ├── i18n/
+│       ├── public/
+│       └── tests/
 ```
 
 **Hinweis:**
@@ -279,8 +340,7 @@ cli/
 │   └── single_disk/
 ├── network/
 │   ├── ethernet/
-│   ├── vlan/
-│   ├── bonding/
+│   ├── bridge/
 │   └── wifi/
 ├── share/
 │   ├── smb/
@@ -293,8 +353,7 @@ cli/
 │   └── cloud/
 ├── iam/
 │   ├── local/
-│   ├── ldap/
-│   └── saml/
+
 ├── log/
 │   ├── audit/
 │   ├── monitoring/
@@ -309,8 +368,7 @@ backend/
 │   └── single_disk/
 ├── network/
 │   ├── ethernet/
-│   ├── vlan/
-│   ├── bonding/
+│   ├── bridge/
 │   └── wifi/
 ├── share/
 │   ├── smb/
@@ -342,8 +400,7 @@ backend/
 │   └── single_disk.py
 ├── network/
 │   ├── ethernet.py
-│   ├── vlan.py
-│   ├── bonding.py
+│   ├── bridge.py
 │   └── wifi.py
 ├── share/
 │   ├── smb.py
@@ -356,8 +413,7 @@ backend/
 │   └── cloud.py
 ├── iam/
 │   ├── local.py
-│   ├── ldap.py
-│   └── saml.py
+
 ├── log/
 │   ├── audit.py
 │   ├── monitoring.py
