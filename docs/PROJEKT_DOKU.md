@@ -1,3 +1,13 @@
+## Test-HDDs für Entwicklung und Tests
+
+Für Entwicklung, automatisierte Tests und sichere Experimente stehen dedizierte Test-HDDs zur Verfügung:
+
+- Geräte: /dev/sdd bis /dev/sdm
+- Größe: jeweils 10 GB
+- Zweck: Storage- und Mount-Tests, Fehlerfälle, Datenintegrität, Performance, Wiederherstellung
+
+Diese Devices dürfen für alle Test- und Entwicklungszwecke beliebig genutzt, formatiert und überschrieben werden. Sie sind nicht für Produktivdaten vorgesehen.
+
 # Hinweis zur Dokumentationsstruktur
 
 Die CoreNAS-Dokumentation ist nach Best Practice in mehrere thematische Dateien aufgeteilt:
